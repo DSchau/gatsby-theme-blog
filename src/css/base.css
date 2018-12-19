@@ -1,0 +1,12 @@
+html, body, #___gatsby {
+  height: 100%;
+}
+
+body {
+  background-color: #002635;
+}
+
+::selection {
+  background: #FF6138;
+  color: white;
+}
