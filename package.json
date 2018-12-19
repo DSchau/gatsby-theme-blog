@@ -59,7 +59,7 @@
     "gatsby-config.js",
     "gatsby-node.js",
     "src/*"
-  ]
+  ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
@@ -68,5 +68,8 @@
     "serve": "gatsby serve",
     "start": "gatsby develop",
     "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
