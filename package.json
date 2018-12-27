@@ -1,7 +1,7 @@
 {
   "name": "@dschau/gatsby-theme-blog",
   "description": "The theme for blog.dustinschau.com",
-  "version": "0.0.0-rc.16",
+  "version": "0.0.0-rc.17",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://blog.dustinschau.com)",
   "dependencies": {
     "@dschau/particles.js": "2.0.0",
@@ -15,6 +15,7 @@
     "gatsby-plugin-layout": "^1.0.10",
     "gatsby-plugin-manifest": "2.0.12",
     "gatsby-plugin-offline": "^2.0.20",
+    "gatsby-plugin-page-creator": "^2.0.5",
     "gatsby-plugin-react-helmet": "3.0.4",
     "gatsby-plugin-remove-trailing-slashes": "2.0.6",
     "gatsby-plugin-sharp": "^2.0.15",

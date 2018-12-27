@@ -69,7 +69,7 @@ module.exports = function themeConfig({
           omitGoogleFont: true,
           pathToConfigModule: path.relative(
             root,
-            path.join(__dirname, path.join('src', 'utils', 'typography.js'))
+            require.resolve('./src/utils/typography.js')
           ),
         },
       },
@@ -79,6 +79,12 @@ module.exports = function themeConfig({
           trackingId: 'UA-102928446-2',
         },
       },
+      {
+        resolve: `gatsby-plugin-page-creator`,
+        options: {
+          path: require.resolve(`./src/pages`),
+        },
+      }
     ],
   }
 };
