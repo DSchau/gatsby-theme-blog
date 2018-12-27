@@ -4,7 +4,7 @@ module.exports = function themeConfig({
   blogContent = path.join('content', 'blog'),
   root
 } = {}) {
-  const relative = () => path.relative(
+  const relative = to => path.relative(
     root,
     path.join(__dirname, to)
   )
