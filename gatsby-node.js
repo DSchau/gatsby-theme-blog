@@ -1,7 +1,8 @@
 const path = require('path');
 const { GraphQLString } = require('gatsby/graphql');
 const slugify = require('limax');
-const { name } = require('./package.json')
+
+const { name: packageName } = require('./package.json')
 
 const createTagPages = (createPage, edges) => {
   const tagTemplate = require.resolve(`./src/templates/tags.js`);
@@ -115,7 +116,7 @@ exports.onCreateWebpackConfig = ({ loaders, actions }) => {
       rules: [
         {
           test: /\.js$/,
-          include: path.dirname(require.resolve(name)),
+          include: path.dirname(require.resolve(packageName)),
           use: [loaders.js()],
         },
       ],
