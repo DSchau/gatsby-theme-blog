@@ -3,7 +3,7 @@ const { GraphQLString } = require('gatsby/graphql');
 const slugify = require('limax');
 
 const createTagPages = (createPage, edges) => {
-  const tagTemplate = path.resolve(`src/templates/tags.js`);
+  const tagTemplate = require.resolve(`./src/templates/tags.js`);
   const posts = {};
 
   edges
@@ -47,7 +47,7 @@ const createTagPages = (createPage, edges) => {
 exports.createPages = function createPages({ actions, graphql }) {
   const { createPage } = actions;
 
-  const blogPostTemplate = path.resolve(`src/templates/blog-post.js`);
+  const blogPostTemplate = require.resolve(`./src/templates/blog-post.js`);
 
   const draftFilter = `
     filter: {
