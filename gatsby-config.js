@@ -69,7 +69,7 @@ module.exports = function themeConfig({
           omitGoogleFont: true,
           pathToConfigModule: path.relative(
             root,
-            path.join(__dirname, path.join('src', 'utils', 'typography.js')
+            path.join(__dirname, path.join('src', 'utils', 'typography.js'))
           ),
         },
       },
