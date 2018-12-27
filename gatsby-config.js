@@ -61,7 +61,12 @@ module.exports = function themeConfig({
         resolve: 'gatsby-plugin-typography',
         options: {
           omitGoogleFont: true,
-          pathToConfigModule: path.join(__dirname, 'src', 'utils', 'typography.js'),
+          pathToConfigModule: path.relative(
+            root,
+            path.join(
+              __dirname, path.join('src', 'utils', 'typography.js')
+            )
+          ),
         },
       },
       {
