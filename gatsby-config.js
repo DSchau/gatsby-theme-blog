@@ -56,7 +56,7 @@ module.exports = function themeConfig({
       {
         resolve: 'gatsby-plugin-layout',
         options: {
-          component: path.join(__dirname, 'dist', 'layouts', 'index.js')
+          component: path.join(__dirname, 'src', 'layouts', 'index.js')
         }
 
       },
@@ -69,7 +69,7 @@ module.exports = function themeConfig({
           omitGoogleFont: true,
           pathToConfigModule: path.relative(
             root,
-            path.join(__dirname, path.join('dist', 'utils', 'typography.js'))
+            path.join(__dirname, path.join('src', 'utils', 'typography.js'))
           ),
         },
       },

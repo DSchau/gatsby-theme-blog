@@ -1,9 +1,10 @@
 const path = require('path');
 const { GraphQLString } = require('gatsby/graphql');
 const slugify = require('limax');
+const { name } = require('./package.json')
 
 const createTagPages = (createPage, edges) => {
-  const tagTemplate = require.resolve(`./dist/templates/tags.js`);
+  const tagTemplate = require.resolve(`./src/templates/tags.js`);
   const posts = {};
 
   edges
@@ -47,7 +48,7 @@ const createTagPages = (createPage, edges) => {
 exports.createPages = function createPages({ actions, graphql }) {
   const { createPage } = actions;
 
-  const blogPostTemplate = require.resolve(`./dist/templates/blog-post.js`);
+  const blogPostTemplate = require.resolve(`./src/templates/blog-post.js`);
 
   const draftFilter = `
     filter: {
@@ -105,6 +106,22 @@ exports.createPages = function createPages({ actions, graphql }) {
     });
 };
 
+/*
+ * Need to transpile the theme
+ */
+exports.onCreateWebpackConfig = ({ loaders, actions }) => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          include: path.dirname(require.resolve(name)),
+          use: [loaders.js()],
+        },
+      ],
+    },
+  })
+}
 
 exports.setFieldsOnGraphQLNodeType = function setFieldsOnGraphQLNode({ type }) {
   switch (type.name) {
