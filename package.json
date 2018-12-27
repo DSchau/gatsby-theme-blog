@@ -44,6 +44,9 @@
     "typography-plugin-code": "0.16.18"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "babel-preset-gatsby": "^0.1.6",
     "cross-env": "5.2.0",
     "del-cli": "1.1.0",
     "husky": "^1.3.0",
@@ -59,15 +62,15 @@
     "gatsby-config.js",
     "gatsby-node.js",
     "index.js",
-    "src/*"
+    "dist/*"
   ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "npm run start",
-    "serve": "gatsby serve",
-    "start": "gatsby develop",
+    "prebuild": "npm run clean",
+    "build": "babel src --out-dir dist --copy-files",
+    "clean": "del-cli \"dist/**/*\"",
+    "prepare": "cross-env NODE_ENV=production npm run build",
     "test": "jest"
   },
   "publishConfig": {
