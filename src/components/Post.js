@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { graphql } from 'gatsby';
 import { rhythm } from '../utils/typography';
 import { MdList } from 'react-icons/md';
 
@@ -134,21 +133,3 @@ export default function({
     </Post>
   );
 }
-
-export const postFragment = graphql`
-  fragment Post on MarkdownRemark {
-    id
-    html
-    excerpt(pruneLength: 160)
-    timeToRead
-    slug
-    frontmatter {
-      date(formatString: "MMMM DD, YYYY")
-      rawDate: date
-      draft
-      excerpt
-      tags
-      title
-    }
-  }
-`;

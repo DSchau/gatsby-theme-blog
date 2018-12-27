@@ -51,7 +51,19 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          ...Post
+          id
+          html
+          excerpt(pruneLength: 160)
+          timeToRead
+          slug
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            rawDate: date
+            draft
+            excerpt
+            tags
+            title
+          }      
         }
       }
     }

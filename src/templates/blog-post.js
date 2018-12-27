@@ -132,8 +132,13 @@ export const pageQuery = graphql`
     }
 
     markdownRemark(slug: { eq: $slug }) {
-      ...Post
+      id
+      html
+      excerpt(pruneLength: 160)
+      timeToRead
+      slug
       frontmatter {
+        date(formatString: "MMMM DD, YYYY")
         featured {
           image: childImageSharp {
             resize(width: 1500, height: 1500) {
@@ -141,6 +146,11 @@ export const pageQuery = graphql`
             }
           }
         }
+        rawDate: date
+        draft
+        excerpt
+        tags
+        title
       }
     }
   }
