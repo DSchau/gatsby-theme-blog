@@ -4,11 +4,6 @@ module.exports = function themeConfig({
   blogContent = path.join('content', 'blog'),
   root
 } = {}) {
-  const relative = to => path.relative(
-    root,
-    path.join(__dirname, to)
-  )
-
   return {
     siteMetadata: {
       title: 'Dustin Schau - Blog',
@@ -61,9 +56,7 @@ module.exports = function themeConfig({
       {
         resolve: 'gatsby-plugin-layout',
         options: {
-          component: relative(
-            path.join('src', 'layouts', 'index.js')
-          )
+          component: path.join(__dirname, 'src', 'layouts', 'index.js')
         }
 
       },
@@ -74,7 +67,10 @@ module.exports = function themeConfig({
         resolve: 'gatsby-plugin-typography',
         options: {
           omitGoogleFont: true,
-          pathToConfigModule: relative(path.join('src', 'utils', 'typography.js')),
+          pathToConfigModule: path.relative(
+            root,
+            path.join(__dirname, path.join('src', 'utils', 'typography.js')
+          ),
         },
       },
       {
