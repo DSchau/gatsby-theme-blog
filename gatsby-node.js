@@ -1,7 +1,6 @@
 const path = require('path');
 const { GraphQLString } = require('gatsby/graphql');
 const slugify = require('limax');
-const path = require('path');
 
 const createTagPages = (createPage, edges) => {
   const tagTemplate = path.resolve(`src/templates/tags.js`);
