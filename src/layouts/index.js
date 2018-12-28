@@ -6,7 +6,6 @@ import { Global } from '@emotion/core'
 import Content from '../components/content'
 import Footer from '../components/footer'
 import Header from '../components/header'
-import SEO from '../components/seo'
 
 const Root = styled.div`
   display: flex;
@@ -41,22 +40,6 @@ export default class Layout extends React.Component {
           }}
         />
         <Root>
-          <SEO
-            description="The blog of the Omaha, Nebraska based software engineer, Dustin Schau"
-            keywords={[
-              'javascript',
-              'react',
-              'programming',
-              'front-end',
-              'graphql',
-              'node',
-              'gatsby',
-              'developer',
-              'ui',
-              'ux',
-              'omaha',
-            ]}
-          />
           <Header isPost={isPost} />
           <Content isPost={isPost} Footer={Footer}>
             {children}

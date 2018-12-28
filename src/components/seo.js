@@ -63,6 +63,8 @@ function SEO({ author, description, lang, meta, keywords, title, twitter }) {
 
 SEO.defaultProps = {
   author: 'Dustin Schau',
+  description:
+    'The blog of the Omaha, Nebraska based software engineer, Dustin Schau',
   lang: `en`,
   meta: [],
   keywords: [],
