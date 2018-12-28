@@ -43,10 +43,6 @@ export default function BlogPost({ data = {}, location, pageContext }) {
       content: `article`,
     },
     {
-      name: `article:author`,
-      content: author,
-    },
-    {
       name: `twitter:label1`,
       content: `Reading time`,
     },

@@ -28,6 +28,10 @@ function SEO({ author, description, lang, meta, keywords, title, twitter }) {
           content: `website`,
         },
         {
+          property: `article:author`,
+          content: author,
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
