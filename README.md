@@ -1,23 +1,57 @@
-# blog (1.0.0)
+# blog-theme
 
-The source code for the [Gatsby][gatsby] driven statically generated blog
+The backing theme powering [my blog](https://github.com/dschau/blog).
 
-## Tech stack
+_Note: this isn't generally applicable... yet. I wanted to explore themes, and this was my way of exploring. However--by all means, check it out and see if you can customize and use for your own blog!_
 
-- [gatsby v2][gatsby]
-  - An awesome React-driven static site generator
-- CSS in JS with [emotion][emotion]
-  - "The Next Generation of CSS-in-JS," used as a styling solution
-- [particles.js][particles.js]
-  - A cool particle effect seen in the header
-- [jest][jest]
-  - Unit test runner with first class snapshot support, watch mode, etc.
-- [markdown][markdown]
-  - Each and every post is authored in Markdown parsed by [remark][remark]
+## Install
 
-[gatsby]: https://github.com/gatsbyjs/gatsby
-[emotion]: https://emotion.sh/
-[particles.js]: https://github.com/VincentGarreau/particles.js/
-[markdown]: https://en.wikipedia.org/wiki/Markdown
-[remark]: http://remark.js.org/
-[jest]: https://facebook.github.io/jest/
+```sh
+npm install --save @dschau/gatsby-blog-theme gatsby@^2.0.75
+```
+
+## Usage
+
+In `gatsby-config.js`:
+
+```js
+module.exports = {
+  __experimentalThemes: [
+    {
+      resolve: '@dschau/gatsby-theme-blog',
+      options: {
+        root: __dirname,
+      },
+    },
+  ],
+}
+```
+
+Additionally, you'll need to create a `content` folder with Markdown files powering the blog.
+
+```shell
+mkdir -p content/blog/2018-12-28-hello-world
+touch content/blog/2018-12-28-hello-world/index.md
+```
+
+A sample post is below:
+
+```md
+---
+date: '2018-12-28'
+title: 'Hello World'
+excerpt: 'This is an excerpt optimized for SEO'
+featured: ./images/create-an-image-here.jpg
+tags:
+  - gatsby
+  - is
+  - wonderful
+---
+
+Hello World! This is my first post! I'll have great features enabled by default, including:
+
+- Syntax highlighting with triple backticks
+- Responsive images
+- Responsive iframe embeds
+- and more!
+```

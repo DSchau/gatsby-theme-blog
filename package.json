@@ -1,7 +1,7 @@
 {
   "name": "@dschau/gatsby-theme-blog",
   "description": "The theme for blog.dustinschau.com",
-  "version": "0.0.0-rc.32",
+  "version": "0.0.0",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://blog.dustinschau.com)",
   "dependencies": {
     "@dschau/gatsby-theme-utils": "^0.0.1",
