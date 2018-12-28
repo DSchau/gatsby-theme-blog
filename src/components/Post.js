@@ -44,7 +44,9 @@ const PostContents = styled.div`
     padding: ${rhythm(1)} ${rhythm(2)};
     padding-top: ${rhythm(1)};
   }
+`;
 
+const PostContent = styled.div`
   > h2 {
     color: #333;
     margin: ${rhythm(1 / 4)} 0;
@@ -68,7 +70,7 @@ const PostContents = styled.div`
     color: #333;
     line-height: ${rhythm(1.25)};
   }
-`;
+`
 
 const Divider = styled.hr`
   border: 0;
@@ -117,7 +119,7 @@ export default function({
         />
       </PostTitle>
       <PostContents>
-        <div className="post-content" dangerouslySetInnerHTML={{ __html }} />
+        <PostContent dangerouslySetInnerHTML={{ __html }} />
         {children}
         <Divider />
       </PostContents>
