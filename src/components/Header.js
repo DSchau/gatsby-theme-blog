@@ -6,7 +6,7 @@ import NavigationButton from './NavigationButton';
 
 import particlesConfig from '../json/particles-config.json';
 
-import { animateBackground, animateShake } from '../css/animations';
+import { animateBackground, animateShake } from '../style/animations';
 
 const Header = styled.header`
   height: ${props => (props.isPost ? '15vh' : '25vh')};

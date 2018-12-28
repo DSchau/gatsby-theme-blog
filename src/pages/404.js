@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 import styled from '@emotion/styled';
 import Link from 'gatsby-link';
 
-import { fadeInBottom } from '../css/animations';
+import { fadeInBottom } from '../style/animations';
 
 import ImageShift from '../components/ImageShift';
 import FourOhFour from '../images/404.jpeg';
