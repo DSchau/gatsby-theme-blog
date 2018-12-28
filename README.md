@@ -1,4 +1,4 @@
-# blog-theme
+# `@dschau/gatsby-theme-blog`
 
 The backing theme powering [my blog](https://github.com/dschau/blog).
 
@@ -7,7 +7,7 @@ _Note: this isn't generally applicable... yet. I wanted to explore themes, and t
 ## Install
 
 ```sh
-npm install --save @dschau/gatsby-blog-theme gatsby@^2.0.75
+npm install --save @dschau/gatsby-theme-blog gatsby@^2.0.75
 ```
 
 ## Usage
