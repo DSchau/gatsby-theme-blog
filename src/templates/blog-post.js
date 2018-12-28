@@ -16,7 +16,7 @@ const Container = styled.div`
   transform: translateY(16px) scale(0.99);
   transform-origin: 50% 0;
   opacity: 0;
-  animation: ${fadeInBottom} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: ${fadeInBottom} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) forwards;
 
   twitterwidget,
   .twitter-tweet {
@@ -27,8 +27,7 @@ const Container = styled.div`
 export default function BlogPost({
   data = {},
   location,
-  pageContext,
-  ...rest
+  pageContext
 }) {
   const { markdownRemark: post } = data;
   const { next, prev } = pageContext;

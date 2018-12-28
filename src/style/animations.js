@@ -4,11 +4,11 @@ export const animateBackground = keyframes`
     0%{
       background-position: 50% 0%;
     }
-    50%{
+    50% {
       background-position: 51% 100%;
     }
-    100%{
-      background-position:50% 0%;
+    100% {
+      background-position: 50% 0%;
     }
 `;
 
