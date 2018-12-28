@@ -127,7 +127,7 @@ const PostContent = styled.div`
     max-height: 100%;
   }
 
-  > .gatsby-highlight-code-line {
+  .gatsby-highlight-code-line {
     background-color: #444;
     display: block;
     margin-right: -1em;
@@ -137,7 +137,7 @@ const PostContent = styled.div`
     border-left: 0.25em solid #66d9ef;
   }
 
-  > .gatsby-highlight {
+  .gatsby-highlight {
     background-color: #272822;
     border-radius: 0.3em;
     margin: 0.5em 0;
@@ -145,7 +145,7 @@ const PostContent = styled.div`
     overflow: auto;
   }
 
-  > .gatsby-highlight pre[class*='language-'] {
+  .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
     padding: 0;
