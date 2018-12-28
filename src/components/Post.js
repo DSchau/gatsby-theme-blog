@@ -7,8 +7,6 @@ import PostTitle from './PostTitle';
 import Toolbar from './PostToolbar';
 import StyledLink from './Link';
 
-import '../css/posts.css';
-
 const Post = styled.section`
   position: relative;
   width: 100%;
@@ -69,6 +67,90 @@ const PostContent = styled.div`
     margin: ${rhythm(3 / 4)} auto;
     color: #333;
     line-height: ${rhythm(1.25)};
+  }
+
+  > a:not(.anchor) {
+    display: inline;
+    color: #d85d15;
+    position: relative;
+    text-decoration: none;
+    padding: 2px;
+    transition: all 175ms ease-in-out;
+  }
+  
+  > a:before, > a:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #d85d15;
+  }
+  
+  > a:hover {
+    background-color: rgba(216, 93, 21, 0.05);
+  }
+  
+  > a:after {
+    bottom: -2px;
+    transition: 200ms ease-out;
+  }
+  
+  > a:before {
+    top: -2px;
+    transform: translateY(24px);
+    opacity: 0; 
+    transition: 200ms ease-out;
+  }
+  
+  > a:hover:before {
+    transform-origin: center top;
+    transform: translateY(0) scaleX(1.025);
+    opacity: 1;
+  }
+  
+  > a:hover:after {
+    transform-origin: center bottom;
+    transform: scaleX(1.025);
+  }
+  
+  > blockquote {
+    margin-left: 0.75rem;
+    padding-left: 1.5rem;
+    border-left: 4px solid #ddd;
+  }
+  
+  > video.responsive {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  > .gatsby-highlight-code-line {
+    background-color: #444;
+    display: block;
+    margin-right: -1em;
+    margin-left: -1em;
+    padding-right: 1em;
+    padding-left: 0.75em;
+    border-left: 0.25em solid #66d9ef;
+  }
+  
+  > .gatsby-highlight {
+    background-color: #272822;
+    border-radius: 0.3em;
+    margin: .5em 0;
+    padding: 1em;
+    overflow: auto;
+  }
+
+  > .gatsby-highlight pre[class*="language-"] {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    overflow: initial;
+    float: left;
+    min-width: 100%;
   }
 `
 

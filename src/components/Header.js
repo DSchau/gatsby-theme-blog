@@ -6,7 +6,6 @@ import NavigationButton from './NavigationButton';
 
 import particlesConfig from '../json/particles-config.json';
 
-import '../css/particle-styles.css';
 import { animateBackground, animateShake } from '../css/animations';
 
 const Header = styled.header`
@@ -29,6 +28,14 @@ const Header = styled.header`
   user-select: none;
   @media only screen and (min-width: 768px) {
     height: ${props => (props.isPost ? '30vh' : '45vh')};
+  }
+
+  > .particles-js-canvas-el {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 `;
 

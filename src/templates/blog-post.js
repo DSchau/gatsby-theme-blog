@@ -7,7 +7,7 @@ import Post from '../components/Post';
 import Tags from '../components/Tags';
 import About from '../components/About';
 
-import { fadeInBottom } from '../css/animations';
+import { fadeInBottom } from '../style/animations';
 
 import 'prismjs/themes/prism-okaidia.css';
 
