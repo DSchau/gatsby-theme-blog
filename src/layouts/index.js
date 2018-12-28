@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import { Global } from '@emotion/core'
 
 import Content from '../components/content'
 import Footer from '../components/footer'
 import Header from '../components/header'
+import SEO from '../components/seo'
 
 const Root = styled.div`
   display: flex;

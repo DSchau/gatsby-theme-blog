@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Helmet from 'react-helmet'
 import styled from '@emotion/styled'
 import Link from 'gatsby-link'
 
