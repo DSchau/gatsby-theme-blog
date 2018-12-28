@@ -22,7 +22,7 @@ const Tag = styled.li`
   transition: all 150ms ease-in-out;
   font-size: ${rhythm(1 / 2)};
   font-weight: bold;
-  &:first-child {
+  &:first-of-type {
     margin-left: 0;
   }
   &:hover {

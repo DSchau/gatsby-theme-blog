@@ -45,7 +45,7 @@ const PostContents = styled.div`
     padding-top: ${rhythm(1)};
   }
 
-  h2 {
+  > h2 {
     color: #333;
     margin: ${rhythm(1 / 4)} 0;
     padding: ${rhythm(1 / 4)} 0;
@@ -53,7 +53,7 @@ const PostContents = styled.div`
     font-weight: 400;
   }
 
-  h3 {
+  > h3 {
     display: inline-block;
     color: #444;
     margin: ${rhythm(1 / 6)} 0;
@@ -63,7 +63,7 @@ const PostContents = styled.div`
     font-weight: 400;
   }
 
-  p {
+  > p {
     margin: ${rhythm(3 / 4)} auto;
     color: #333;
     line-height: ${rhythm(1.25)};
