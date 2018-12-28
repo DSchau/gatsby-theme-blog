@@ -42,6 +42,7 @@ export default class Layout extends React.Component {
         />
         <Root>
           <SEO
+            description="The blog of the Omaha, Nebraska based software engineer, Dustin Schau"
             keywords={[
               'javascript',
               'react',

@@ -36,7 +36,6 @@ export default function BlogPost({ data = {}, location, pageContext }) {
   const image = post.frontmatter.featured
     ? post.frontmatter.featured.image.resize.src
     : null
-  const author = data.site.siteMetadata.author
 
   const meta = [
     {
@@ -45,14 +44,6 @@ export default function BlogPost({ data = {}, location, pageContext }) {
     },
     {
       name: `article:author`,
-      content: author,
-    },
-    {
-      name: `twitter:creator`,
-      content: `schaudustin`,
-    },
-    {
-      name: `author`,
       content: author,
     },
     {
@@ -107,13 +98,6 @@ export default function BlogPost({ data = {}, location, pageContext }) {
 
 export const pageQuery = graphql`
   query BlogPostByPath($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-
     markdownRemark(slug: { eq: $slug }) {
       id
       html
