@@ -69,7 +69,7 @@ const PostContent = styled.div`
     line-height: ${rhythm(1.25)};
   }
 
-  > a:not(.anchor) {
+  a:not(.anchor) {
     display: inline;
     color: #d85d15;
     position: relative;
@@ -78,7 +78,7 @@ const PostContent = styled.div`
     transition: all 175ms ease-in-out;
   }
   
-  > a:before, > a:after {
+  a:before, a:after {
     content: '';
     position: absolute;
     left: 0;
@@ -88,29 +88,29 @@ const PostContent = styled.div`
     background-color: #d85d15;
   }
   
-  > a:hover {
+  a:hover {
     background-color: rgba(216, 93, 21, 0.05);
   }
   
-  > a:after {
+  a:after {
     bottom: -2px;
     transition: 200ms ease-out;
   }
   
-  > a:before {
+  a:before {
     top: -2px;
     transform: translateY(24px);
     opacity: 0; 
     transition: 200ms ease-out;
   }
   
-  > a:hover:before {
+  a:hover:before {
     transform-origin: center top;
     transform: translateY(0) scaleX(1.025);
     opacity: 1;
   }
   
-  > a:hover:after {
+  a:hover:after {
     transform-origin: center bottom;
     transform: scaleX(1.025);
   }
