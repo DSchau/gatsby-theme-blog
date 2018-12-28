@@ -1,6 +1,7 @@
 const path = require('path');
 const { GraphQLString } = require('gatsby/graphql');
 const slugify = require('limax');
+const { addToWebpackConfig } = require('@dschau/gatsby-theme-utils')
 
 const { name: packageName } = require('./package.json')
 
@@ -107,22 +108,7 @@ exports.createPages = function createPages({ actions, graphql }) {
     });
 };
 
-/*
- * Need to transpile the theme
- */
-exports.onCreateWebpackConfig = ({ loaders, actions }) => {
-  actions.setWebpackConfig({
-    module: {
-      rules: [
-        {
-          test: /\.js$/,
-          include: path.dirname(require.resolve(packageName)),
-          use: [loaders.js()],
-        },
-      ],
-    },
-  })
-}
+exports.onCreateWebpackConfig = addToWebpackConfig(packageName)
 
 exports.setFieldsOnGraphQLNodeType = function setFieldsOnGraphQLNode({ type }) {
   switch (type.name) {

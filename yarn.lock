@@ -793,6 +793,11 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@dschau/gatsby-theme-utils@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@dschau/gatsby-theme-utils/-/gatsby-theme-utils-0.0.1.tgz#d6df5c71e7c908697f4a137752ac831e753a5ce7"
+  integrity sha512-FmiXrOgd+JWPCqJofdQEE/lKw4aSQGYv+wWfiI2hM5Q1TDZAZ78fZTTisPrOQCq/wl3cnQ/y4wzuTz6TyMU9ZQ==
+
 "@dschau/particles.js@2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@dschau/particles.js/-/particles.js-2.0.0.tgz#7eff39237c4b2528598a344f52372e27c69b6e23"
