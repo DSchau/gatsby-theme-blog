@@ -1,7 +1,7 @@
 {
   "name": "@dschau/gatsby-theme-blog",
   "description": "The theme for blog.dustinschau.com",
-  "version": "0.0.0-rc.25",
+  "version": "0.0.0-rc.26",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://blog.dustinschau.com)",
   "dependencies": {
     "@dschau/gatsby-theme-utils": "^0.0.1",
@@ -33,6 +33,7 @@
     "limax": "^1.7.0",
     "lodash.debounce": "4.0.8",
     "prismjs": "~1.15.0",
+    "prop-types": "^15.6.2",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
     "react-emotion": "~10.0.0",

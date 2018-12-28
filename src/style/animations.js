@@ -1,4 +1,4 @@
-import { keyframes } from '@emotion/core';
+import { keyframes } from '@emotion/core'
 
 export const animateBackground = keyframes`
     0%{
@@ -10,7 +10,7 @@ export const animateBackground = keyframes`
     100% {
       background-position: 50% 0%;
     }
-`;
+`
 
 /*
  * https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
@@ -31,11 +31,11 @@ export const animateShake = keyframes`
   40%, 60% {
     transform: translate3d(2px, 0, 0);
   }
-`;
+`
 
 export const fadeInBottom = keyframes`
   to {
     transform: translateY(0);
     opacity: 1;
   }
-`;
+`

@@ -20,7 +20,7 @@ describe('getColorFromString', () => {
       `about`,
       `front end frameworks`,
       `getting started`,
-      `hola`
+      `hola`,
     ].map(string => [string, getColorFromString(string)])
 
     expect(strings).toMatchSnapshot()

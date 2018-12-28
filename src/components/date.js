@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../utils/typography'
 
 const PostDate = styled.h2`
   position: absolute;
@@ -14,8 +14,8 @@ const PostDate = styled.h2`
   font-size: ${rhythm(3 / 4)};
   font-weight: 400;
   z-index: 2;
-`;
+`
 
 export default function DateDisplay({ date }) {
-  return <PostDate>{date}</PostDate>;
+  return <PostDate>{date}</PostDate>
 }

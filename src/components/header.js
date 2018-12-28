@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Link from 'gatsby-link';
-import styled from '@emotion/styled';
+import React, { Component } from 'react'
+import Link from 'gatsby-link'
+import styled from '@emotion/styled'
 
-import NavigationButton from './NavigationButton';
+import NavigationButton from './navigation-button'
 
-import particlesConfig from '../json/particles-config.json';
+import particlesConfig from '../json/particles-config.json'
 
-import { animateBackground, animateShake } from '../style/animations';
+import { animateBackground, animateShake } from '../style/animations'
 
 const Header = styled.header`
   height: ${props => (props.isPost ? '15vh' : '25vh')};
@@ -37,7 +37,7 @@ const Header = styled.header`
     bottom: 0;
     left: 0;
   }
-`;
+`
 
 const Name = styled.h1`
   display: flex;
@@ -60,7 +60,7 @@ const Name = styled.h1`
     font-size: 4.5rem;
     padding: 1rem 2rem;
   }
-`;
+`
 
 const Letter = styled.span`
   display: inline-block;
@@ -69,53 +69,53 @@ const Letter = styled.span`
   &:hover {
     animation: ${animateShake} 1000ms ease-in-out;
   }
-`;
+`
 
 const First = styled.span`
   padding-right: 2vw;
   font-weight: 700;
   white-space: nowrap;
-`;
+`
 
 const Last = styled.span`
   font-weight: 400;
   white-space: nowrap;
-`;
+`
 
 const StyledLink = styled(Link)`
   color: inherit;
-`;
+`
 
 const BackContainer = styled.div`
   position: fixed;
   z-index: 2;
   top: 4px;
   left: 0;
-`;
+`
 
 class BlogHeader extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       showBackButton: false,
-    };
+    }
   }
 
   async componentDidMount() {
     this.setState({
       showBackButton: document.referrer.match('dustinschau'),
-    });
+    })
 
     this.Particles = await import(/* webpackChunkName: "dschau/particles.js" */ '@dschau/particles.js').then(
       ({ default: Particles }) => Particles
-    );
+    )
 
-    this.Particles('blog-header', particlesConfig);
+    this.Particles('blog-header', particlesConfig)
   }
 
   render() {
-    const { showBackButton } = this.state;
+    const { showBackButton } = this.state
     return (
       <Header id="blog-header" {...this.props}>
         {showBackButton && (
@@ -145,8 +145,8 @@ class BlogHeader extends Component {
           </StyledLink>
         </Name>
       </Header>
-    );
+    )
   }
 }
 
-export default BlogHeader;
+export default BlogHeader

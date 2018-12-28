@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
 const Content = styled.main`
   position: absolute;
@@ -12,7 +12,7 @@ const Content = styled.main`
   @media only screen and (min-width: 768px) {
     top: ${props => (props.isPost ? '25vh' : '40vh')};
   }
-`;
+`
 
 function MainContent({ children, Footer, ...rest }) {
   return (
@@ -20,7 +20,7 @@ function MainContent({ children, Footer, ...rest }) {
       {children}
       {Footer && <Footer />}
     </Content>
-  );
+  )
 }
 
-export default MainContent;
+export default MainContent

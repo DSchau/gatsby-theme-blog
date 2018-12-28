@@ -15,14 +15,14 @@ const options = {
     [MOBILE_MEDIA_QUERY]: {
       // Make baseFontSize on mobile 16px.
       html: {
-        fontSize: `${16 / 16 * 100}%`
-      }
-    }
-  })
+        fontSize: `${(16 / 16) * 100}%`,
+      },
+    },
+  }),
 }
 
 const typography = new Typography(options)
-const { rhythm } = typography;
+const { rhythm } = typography
 
 export { rhythm }
 export default typography

@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Helmet from 'react-helmet';
-import styled from '@emotion/styled';
-import Link from 'gatsby-link';
+import React, { Component } from 'react'
+import Helmet from 'react-helmet'
+import styled from '@emotion/styled'
+import Link from 'gatsby-link'
 
-import { fadeInBottom } from '../style/animations';
-
-import ImageShift from '../components/ImageShift';
-import FourOhFour from '../images/404.jpeg';
+import ImageShift from '../components/image-shift'
+import SEO from '../components/seo'
+import FourOhFour from '../images/404.jpeg'
+import { fadeInBottom } from '../style/animations'
 
 const Container = styled.div`
   max-width: 100%;
@@ -14,7 +14,7 @@ const Container = styled.div`
   transform-origin: 50% 0;
   opacity: 0;
   animation: ${fadeInBottom} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-`;
+`
 
 const ImageContainer = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const ImageContainer = styled.div`
   &:hover {
     transform: scale(1.075);
   }
-`;
+`
 
 const Header = styled.h1`
   color: white;
@@ -38,7 +38,7 @@ const Header = styled.h1`
   text-align: center;
   line-height: 96px;
   pointer-events: none;
-`;
+`
 
 const Description = styled.p`
   font-size: 0.9rem;
@@ -50,7 +50,7 @@ const Description = styled.p`
   z-index: 2;
   text-align: center;
   font-style: italic;
-`;
+`
 
 const Image = styled(ImageShift)`
   position: absolute;
@@ -58,15 +58,13 @@ const Image = styled(ImageShift)`
   right: 0;
   bottom: 0;
   left: 0;
-`;
+`
 
 export default class OhNoFourOhFour extends Component {
   render() {
     return (
       <React.Fragment>
-        <Helmet>
-          <title>404 - Not Found</title>
-        </Helmet>
+        <SEO title="404 - Not Found" />
         <Container>
           <Link to="/">
             <ImageContainer>
@@ -77,6 +75,6 @@ export default class OhNoFourOhFour extends Component {
           </Link>
         </Container>
       </React.Fragment>
-    );
+    )
   }
 }

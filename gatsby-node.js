@@ -1,62 +1,59 @@
-const path = require('path');
-const { GraphQLString } = require('gatsby/graphql');
-const slugify = require('limax');
+const path = require('path')
+const { GraphQLString } = require('gatsby/graphql')
+const slugify = require('limax')
 const { addToWebpackConfig } = require('@dschau/gatsby-theme-utils')
 
 const { name: packageName } = require('./package.json')
 
 const createTagPages = (createPage, edges) => {
-  const tagTemplate = require.resolve(`./src/templates/tags.js`);
-  const posts = {};
+  const tagTemplate = require.resolve(`./src/templates/tags.js`)
+  const posts = {}
 
-  edges
-    .forEach(({ node }) => {
-      if (node.frontmatter.tags) {
-        node.frontmatter.tags
-          .forEach(tag => {
-            if (!posts[tag]) {
-              posts[tag] = [];
-            }
-            posts[tag].push(node);
-          });
-      }
-    });
+  edges.forEach(({ node }) => {
+    if (node.frontmatter.tags) {
+      node.frontmatter.tags.forEach(tag => {
+        if (!posts[tag]) {
+          posts[tag] = []
+        }
+        posts[tag].push(node)
+      })
+    }
+  })
 
-  const tags = Object.keys(posts);
-  
+  const tags = Object.keys(posts)
+
   createPage({
     path: '/tags',
     component: tagTemplate,
     context: {
-      tags
-    }
-  });
+      tags,
+    },
+  })
 
-  Object.keys(posts)
-    .forEach(tagName => {
-      const tag = posts[tagName];
-      createPage({
-        path: `/tags/${tagName}`,
-        component: tagTemplate,
-        context: {
-          tags,
-          tag,
-          tagName
-        }
-      })
-    });
-};
+  Object.keys(posts).forEach(tagName => {
+    const tag = posts[tagName]
+    createPage({
+      path: `/tags/${tagName}`,
+      component: tagTemplate,
+      context: {
+        tags,
+        tag,
+        tagName,
+      },
+    })
+  })
+}
 
 exports.createPages = function createPages({ actions, graphql }) {
-  const { createPage } = actions;
+  const { createPage } = actions
 
-  const blogPostTemplate = require.resolve(`./src/templates/blog-post.js`);
+  const blogPostTemplate = require.resolve(`./src/templates/blog-post.js`)
 
   const draftFilter = `
     filter: {
       frontmatter: { draft: { ne: true }}
     }
-  `;
+  `
 
   return graphql(`{
     allMarkdownRemark(
@@ -80,33 +77,32 @@ exports.createPages = function createPages({ actions, graphql }) {
         }
       }
     }
-  }`)
-    .then(result => {
-      if (result.errors) {
-        return Promise.reject(result.errors)
-      }
+  }`).then(result => {
+    if (result.errors) {
+      return Promise.reject(result.errors)
+    }
 
-      const posts = result.data.allMarkdownRemark.edges;
+    const posts = result.data.allMarkdownRemark.edges
 
-      createTagPages(createPage, posts);
+    createTagPages(createPage, posts)
 
-      // Create pages for each markdown file.
-      posts.forEach(({ node }, index) => {
-        const { slug } = node;
-        createPage({
-          path: slug,
-          component: blogPostTemplate,
-          context: {
-            prev: index === 0 ? null : posts[index - 1].node,
-            next: index === posts.length - 1 ? null : posts[index + 1].node,
-            slug
-          }
-        });
-      });
+    // Create pages for each markdown file.
+    posts.forEach(({ node }, index) => {
+      const { slug } = node
+      createPage({
+        path: slug,
+        component: blogPostTemplate,
+        context: {
+          prev: index === 0 ? null : posts[index - 1].node,
+          next: index === posts.length - 1 ? null : posts[index + 1].node,
+          slug,
+        },
+      })
+    })
 
-      return posts;
-    });
-};
+    return posts
+  })
+}
 
 exports.onCreateWebpackConfig = addToWebpackConfig(packageName)
 
@@ -117,20 +113,27 @@ exports.setFieldsOnGraphQLNodeType = function setFieldsOnGraphQLNode({ type }) {
         type: {
           type: GraphQLString,
           resolve(source) {
-            const { fileAbsolutePath } = source;
-            const [,folder] = fileAbsolutePath.split(path.resolve('content')).pop().split('/');
-            return folder;
-          }
+            const { fileAbsolutePath } = source
+            const [, folder] = fileAbsolutePath
+              .split(path.resolve('content'))
+              .pop()
+              .split('/')
+            return folder
+          },
         },
         slug: {
           type: GraphQLString,
           resolve(source) {
-            const { frontmatter } = source;
-            return frontmatter.path || frontmatter.slug || `/${slugify(frontmatter.title)}`;
-          }
-        }
+            const { frontmatter } = source
+            return (
+              frontmatter.path ||
+              frontmatter.slug ||
+              `/${slugify(frontmatter.title)}`
+            )
+          },
+        },
       }
     default:
-      return {};
+      return {}
   }
-};
+}

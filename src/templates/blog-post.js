@@ -1,15 +1,15 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import styled from '@emotion/styled';
-import { graphql } from 'gatsby';
+import React from 'react'
+import styled from '@emotion/styled'
+import { graphql } from 'gatsby'
 
-import Post from '../components/Post';
-import Tags from '../components/Tags';
-import About from '../components/About';
+import Post from '../components/post'
+import Tags from '../components/tags'
+import About from '../components/about'
+import SEO from '../components/seo'
 
-import { fadeInBottom } from '../style/animations';
+import { fadeInBottom } from '../style/animations'
 
-import 'prismjs/themes/prism-okaidia.css';
+import 'prismjs/themes/prism-okaidia.css'
 
 const Container = styled.div`
   max-width: 100%;
@@ -22,43 +22,23 @@ const Container = styled.div`
   .twitter-tweet {
     margin: 1rem auto;
   }
-`;
+`
 
-export default function BlogPost({
-  data = {},
-  location,
-  pageContext
-}) {
-  const { markdownRemark: post } = data;
-  const { next, prev } = pageContext;
+export default function BlogPost({ data = {}, location, pageContext }) {
+  const { markdownRemark: post } = data
+  const { next, prev } = pageContext
 
-  const isAbout = location.pathname.match(/about/);
+  const isAbout = location.pathname.match(/about/)
 
   const description = post.frontmatter.excerpt
     ? post.frontmatter.excerpt
-    : post.excerpt;
+    : post.excerpt
   const image = post.frontmatter.featured
     ? post.frontmatter.featured.image.resize.src
-    : null;
-  const author = data.site.siteMetadata.author;
+    : null
+  const author = data.site.siteMetadata.author
 
   const meta = [
-    {
-      name: `description`,
-      content: description,
-    },
-    {
-      name: `og:description`,
-      content: description,
-    },
-    {
-      name: `twitter:description`,
-      content: description,
-    },
-    {
-      name: `og:title`,
-      content: post.frontmatter.title,
-    },
     {
       name: `og:type`,
       content: `article`,
@@ -100,11 +80,15 @@ export default function BlogPost({
           },
         ]
       : []
-  );
+  )
 
   return (
     <Container>
-      <Helmet title={`Dustin Schau - ${post.frontmatter.title}`} meta={meta} />
+      <SEO
+        title={post.frontmatter.title}
+        description={description}
+        meta={meta}
+      />
       <Post
         className="blog-post"
         html={post.html}
@@ -118,7 +102,7 @@ export default function BlogPost({
         {isAbout && <About />}
       </Post>
     </Container>
-  );
+  )
 }
 
 export const pageQuery = graphql`
@@ -153,4 +137,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../utils/typography'
 
-import SocialButton from './SocialButton';
+import SocialButton from './social-button'
 
 const SocialContainer = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const SocialContainer = styled.div`
   .button {
     margin: ${rhythm(1 / 3)} 0;
   }
-`;
+`
 
 export default function Social(props) {
   return (
@@ -24,5 +24,5 @@ export default function Social(props) {
       <SocialButton className="button" type="twitter" {...props} />
       <SocialButton className="button" type="facebook" {...props} />
     </SocialContainer>
-  );
+  )
 }

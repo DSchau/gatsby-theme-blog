@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../utils/typography'
 
-import NavigationButton from './NavigationButton';
-import PostDate from './Date';
+import NavigationButton from './navigation-button'
+import PostDate from './date'
 
 const ToolbarContainer = styled.div`
   display: flex;
   padding-bottom: ${rhythm(1 / 4)};
-`;
+`
 
 export default function PostToolbar({ date, isPost, next, prev, title }) {
   const Buttons = () => {
@@ -27,14 +27,14 @@ export default function PostToolbar({ date, isPost, next, prev, title }) {
             </NavigationButton>
           )}
         </div>
-      );
+      )
     }
-    return null;
-  };
+    return null
+  }
   return (
     <ToolbarContainer>
       <Buttons />
       <PostDate date={date} />
     </ToolbarContainer>
-  );
+  )
 }

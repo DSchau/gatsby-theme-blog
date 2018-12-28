@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import Link from 'gatsby-link';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import React from 'react'
+import styled from '@emotion/styled'
+import Link from 'gatsby-link'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 
-import { getColorFromString } from '../utils/color';
-import { rhythm } from '../utils/typography';
+import { getColorFromString } from '../utils/color'
+import { rhythm } from '../utils/typography'
 
 const StyledLink = styled(Link)`
   position: absolute;
@@ -40,25 +40,25 @@ const StyledLink = styled(Link)`
       white-space: nowrap;
     }
   }
-`;
+`
 
-const A = StyledLink.withComponent('a');
+const A = StyledLink.withComponent('a')
 
 const Prev = styled(StyledLink)`
   left: 0;
-`;
+`
 
 const Next = styled(StyledLink)`
   right: 0;
-`;
+`
 
 const PrevA = styled(A)`
   left: 0;
-`;
+`
 
 const NextA = styled(A)`
   right: 0;
-`;
+`
 
 export default function BackButton({
   absolute,
@@ -69,18 +69,18 @@ export default function BackButton({
   target = '_blank',
   ...rest
 }) {
-  let Container = prev ? Prev : Next;
+  let Container = prev ? Prev : Next
   let props = {
     to,
     ...rest,
-  };
+  }
   if (absolute) {
-    Container = prev ? PrevA : NextA;
+    Container = prev ? PrevA : NextA
     props = {
       href: to,
       target,
       ...rest,
-    };
+    }
   }
   return (
     <Container {...props}>
@@ -88,5 +88,5 @@ export default function BackButton({
       <span className="content">{children}</span>
       {next && <FaChevronRight className="icon" />}
     </Container>
-  );
+  )
 }

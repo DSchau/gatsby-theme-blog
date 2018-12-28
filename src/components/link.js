@@ -1,13 +1,13 @@
 // eslint-disable-next-line
-import React from 'react';
-import styled from '@emotion/styled';
-import { rhythm } from '../utils/typography';
-import Link from 'gatsby-link';
+import React from 'react'
+import styled from '@emotion/styled'
+import { rhythm } from '../utils/typography'
+import Link from 'gatsby-link'
 
-import { getColorFromString } from '../utils/color';
+import { getColorFromString } from '../utils/color'
 
 const getColors = props => {
-  const color = getColorFromString(props.title);
+  const color = getColorFromString(props.title)
   return `
       background-color: ${color};
       color: white;
@@ -16,8 +16,8 @@ const getColors = props => {
         color: ${color};
         background-color: white;
       }
-    `;
-};
+    `
+}
 
 export default styled(Link)`
   display: inline-block;
@@ -32,4 +32,4 @@ export default styled(Link)`
   border-style: solid;
   transition: all 125ms ease-in-out;
   ${props => getColors(props)};
-`;
+`

@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['eslint-config-react-app']
+  extends: ['eslint-config-react-app'],
 }

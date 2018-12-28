@@ -2,12 +2,17 @@ const path = require('path')
 
 module.exports = function themeConfig({
   blogContent = path.join('content', 'blog'),
-  root
+  root,
 } = {}) {
   return {
     siteMetadata: {
-      title: 'Dustin Schau - Blog',
+      title: 'Blog',
+      description:
+        'The blog of the Omaha, Nebraska based software engineer, Dustin Schau',
       author: 'Dustin Schau',
+      social: {
+        twitter: 'schaudustin',
+      },
     },
     plugins: [
       {
@@ -56,9 +61,8 @@ module.exports = function themeConfig({
       {
         resolve: 'gatsby-plugin-layout',
         options: {
-          component: path.join(__dirname, 'src', 'layouts', 'index.js')
-        }
-
+          component: path.join(__dirname, 'src', 'layouts', 'index.js'),
+        },
       },
       'gatsby-transformer-sharp',
       'gatsby-plugin-sharp',
@@ -84,7 +88,7 @@ module.exports = function themeConfig({
         options: {
           path: require.resolve(`./src/pages`),
         },
-      }
+      },
     ],
   }
-};
+}

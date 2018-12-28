@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Post from './Post'
+import Post from './post'
 
 export default function Preview({ children, excerpt, title, to, ...rest }) {
   return (

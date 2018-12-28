@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { rhythm } from '../utils/typography';
-import { MdList } from 'react-icons/md';
+import React from 'react'
+import styled from '@emotion/styled'
+import { rhythm } from '../utils/typography'
+import { MdList } from 'react-icons/md'
 
-import PostTitle from './PostTitle';
-import Toolbar from './PostToolbar';
-import StyledLink from './Link';
+import PostTitle from './post-title'
+import Toolbar from './post-toolbar'
+import StyledLink from './link'
 
 const Post = styled.section`
   position: relative;
@@ -33,7 +33,7 @@ const Post = styled.section`
     font-weight: 700;
     display: inline-block;
   }
-`;
+`
 
 const PostContents = styled.div`
   max-width: 100%;
@@ -42,7 +42,7 @@ const PostContents = styled.div`
     padding: ${rhythm(1)} ${rhythm(2)};
     padding-top: ${rhythm(1)};
   }
-`;
+`
 
 const PostContent = styled.div`
   > h2 {
@@ -77,7 +77,8 @@ const PostContent = styled.div`
     padding: 2px;
     transition: all 175ms ease-in-out;
 
-    :before, :after {
+    :before,
+    :after {
       content: '';
       position: absolute;
       left: 0;
@@ -95,7 +96,7 @@ const PostContent = styled.div`
     :before {
       top: -2px;
       transform: translateY(24px);
-      opacity: 0; 
+      opacity: 0;
       transition: 200ms ease-out;
     }
 
@@ -114,13 +115,13 @@ const PostContent = styled.div`
       }
     }
   }
-  
+
   > blockquote {
     margin-left: 0.75rem;
     padding-left: 1.5rem;
     border-left: 4px solid #ddd;
   }
-  
+
   > video.responsive {
     max-width: 100%;
     max-height: 100%;
@@ -135,16 +136,16 @@ const PostContent = styled.div`
     padding-left: 0.75em;
     border-left: 0.25em solid #66d9ef;
   }
-  
+
   > .gatsby-highlight {
     background-color: #272822;
     border-radius: 0.3em;
-    margin: .5em 0;
+    margin: 0.5em 0;
     padding: 1em;
     overflow: auto;
   }
 
-  > .gatsby-highlight pre[class*="language-"] {
+  > .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
     padding: 0;
@@ -159,17 +160,17 @@ const Divider = styled.hr`
   width: 75%;
   margin: ${rhythm(1 / 2)} auto;
   border-bottom: 1px solid #eee;
-`;
+`
 
 const ListIcon = styled(MdList)`
   font-size: 32px;
   margin-right: 0.5rem;
-`;
+`
 
 const AllPostsContainer = styled.span`
   display: flex;
   align-items: center;
-`;
+`
 
 export default function({
   children,
@@ -184,10 +185,10 @@ export default function({
 }) {
   const isPost = (truthy, falsy = null) => {
     if (linkTo === '/') {
-      return truthy;
+      return truthy
     }
-    return falsy;
-  };
+    return falsy
+  }
   return (
     <Post className={[`post`].concat(className || []).join(' ')} {...rest}>
       <PostTitle title={title} to={isPost(undefined, linkTo)}>
@@ -215,5 +216,5 @@ export default function({
         )}
       </StyledLink>
     </Post>
-  );
+  )
 }
