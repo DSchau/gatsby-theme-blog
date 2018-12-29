@@ -1,14 +1,14 @@
 {
   "name": "@dschau/gatsby-theme-blog",
   "description": "The theme for blog.dustinschau.com",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Dustin Schau <dustinschau@gmail.com> (https://blog.dustinschau.com)",
   "dependencies": {
-    "@dschau/gatsby-theme-utils": "^0.0.1",
+    "@dschau/gatsby-theme-utils": "^0.0.3",
     "@dschau/particles.js": "2.0.0",
     "@emotion/core": "^10.0.5",
     "@emotion/styled": "^10.0.5",
-    "gatsby": "^2.0.73",
+    "gatsby-image": "^2.0.25",
     "gatsby-link": "2.0.7",
     "gatsby-plugin-catch-links": "2.0.9",
     "gatsby-plugin-emotion": "^4.0.1",
@@ -71,5 +71,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.77"
   }
 }

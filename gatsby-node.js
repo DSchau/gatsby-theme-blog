@@ -1,9 +1,39 @@
 const path = require('path')
-const { GraphQLString } = require('gatsby/graphql')
 const slugify = require('limax')
 const { addToWebpackConfig } = require('@dschau/gatsby-theme-utils')
 
 const { name: packageName } = require('./package.json')
+
+const getType = node => {
+  const { fileAbsolutePath } = node
+  const [, type] = fileAbsolutePath
+    .split(path.resolve('content'))
+    .pop()
+    .split('/')
+  return type
+}
+
+exports.onCreateNode = function onCreateNode({
+  actions: { createNodeField },
+  node,
+}) {
+  switch (node.internal.type) {
+    case 'MarkdownRemark':
+      createNodeField({
+        node,
+        name: 'slug',
+        value: `/${slugify(node.frontmatter.title)}`,
+      })
+      createNodeField({
+        node,
+        name: 'type',
+        value: getType(node),
+      })
+      break
+    default:
+      break
+  }
+}
 
 const createTagPages = (createPage, edges) => {
   const tagTemplate = require.resolve(`./src/templates/tags.js`)
@@ -20,24 +50,12 @@ const createTagPages = (createPage, edges) => {
     }
   })
 
-  const tags = Object.keys(posts)
-
-  createPage({
-    path: '/tags',
-    component: tagTemplate,
-    context: {
-      tags,
-    },
-  })
-
   Object.keys(posts).forEach(tagName => {
-    const tag = posts[tagName]
     createPage({
       path: `/tags/${tagName}`,
       component: tagTemplate,
       context: {
-        tags,
-        tag,
+        tags: posts[tagName],
         tagName,
       },
     })
@@ -63,13 +81,16 @@ exports.createPages = function createPages({ actions, graphql }) {
     ) {
       edges {
         node {
-          excerpt(pruneLength: 250)
+          excerpt(pruneLength: 160)
           html
           id
           timeToRead
-          slug
+          fields {
+            slug
+          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
+            excerpt
             draft
             tags
             title
@@ -88,7 +109,9 @@ exports.createPages = function createPages({ actions, graphql }) {
 
     // Create pages for each markdown file.
     posts.forEach(({ node }, index) => {
-      const { slug } = node
+      const {
+        fields: { slug },
+      } = node
       createPage({
         path: slug,
         component: blogPostTemplate,
@@ -105,35 +128,3 @@ exports.createPages = function createPages({ actions, graphql }) {
 }
 
 exports.onCreateWebpackConfig = addToWebpackConfig(packageName)
-
-exports.setFieldsOnGraphQLNodeType = function setFieldsOnGraphQLNode({ type }) {
-  switch (type.name) {
-    case 'MarkdownRemark':
-      return {
-        type: {
-          type: GraphQLString,
-          resolve(source) {
-            const { fileAbsolutePath } = source
-            const [, folder] = fileAbsolutePath
-              .split(path.resolve('content'))
-              .pop()
-              .split('/')
-            return folder
-          },
-        },
-        slug: {
-          type: GraphQLString,
-          resolve(source) {
-            const { frontmatter } = source
-            return (
-              frontmatter.path ||
-              frontmatter.slug ||
-              `/${slugify(frontmatter.title)}`
-            )
-          },
-        },
-      }
-    default:
-      return {}
-  }
-}

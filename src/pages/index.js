@@ -26,18 +26,15 @@ export default function Index({ data, location }) {
       {posts
         .filter(post => post.node.frontmatter.title.length > 0)
         .slice(start, end)
-        .map(({ node: post }) => {
-          return (
-            <div key={post.id}>
-              <Preview
-                excerpt={post.frontmatter.excerpt || post.excerpt}
-                date={post.frontmatter.date}
-                title={post.frontmatter.title}
-                to={post.slug}
-              />
-            </div>
-          )
-        })}
+        .map(({ node: post }) => (
+          <Preview
+            key={post.id}
+            excerpt={post.frontmatter.excerpt || post.excerpt}
+            date={post.frontmatter.date}
+            title={post.frontmatter.title}
+            to={post.fields.slug}
+          />
+        ))}
     </React.Fragment>
   )
 }
@@ -60,7 +57,9 @@ export const pageQuery = graphql`
           html
           excerpt(pruneLength: 160)
           timeToRead
-          slug
+          fields {
+            slug
+          }
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             rawDate: date

@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from '@emotion/styled'
+import GatsbyImage from 'gatsby-image'
+
 import { rhythm } from '../utils/typography'
-
 import SocialIcons from './social-icons'
-
-import me from '../images/me.jpeg'
 
 const Container = styled.div`
   display: flex;
@@ -18,15 +17,8 @@ const Container = styled.div`
   }
 `
 
-const Image = styled.img`
-  width: ${rhythm(3)};
-  height: ${rhythm(3)};
-  border-radius: ${rhythm(3)};
-  @media only screen and (min-width: 768px) {
-    width: ${rhythm(5)};
-    height: ${rhythm(5)};
-    border-radius: ${rhythm(5)};
-  }
+const Image = styled(GatsbyImage)`
+  border-radius: 100%;
 `
 
 const Details = styled.div`
@@ -58,10 +50,14 @@ const Description = styled.p`
   color: #444;
 `
 
-export default function About() {
+export default function About({ image }) {
   return (
     <Container>
-      <Image src={me} />
+      {image && (
+        <div>
+          <Image {...image} />
+        </div>
+      )}
       <Details>
         <Name>
           Dustin <Last>Schau</Last>

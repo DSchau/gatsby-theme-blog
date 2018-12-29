@@ -28,8 +28,6 @@ export default function BlogPost({ data = {}, location, pageContext }) {
   const { markdownRemark: post } = data
   const { next, prev } = pageContext
 
-  const isAbout = location.pathname.match(/about/)
-
   const description = post.frontmatter.excerpt
     ? post.frontmatter.excerpt
     : post.excerpt
@@ -86,7 +84,7 @@ export default function BlogPost({ data = {}, location, pageContext }) {
         prev={prev}
       >
         <Tags list={post.frontmatter.tags} />
-        {isAbout && <About />}
+        <About image={data.image.childImageSharp} />
       </Post>
     </Container>
   )
@@ -94,12 +92,21 @@ export default function BlogPost({ data = {}, location, pageContext }) {
 
 export const pageQuery = graphql`
   query BlogPostByPath($slug: String!) {
-    markdownRemark(slug: { eq: $slug }) {
+    image: file(absolutePath: { regex: "/me.jpg/" }) {
+      childImageSharp {
+        fixed(width: 80) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
       excerpt(pruneLength: 160)
       timeToRead
-      slug
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         featured {
