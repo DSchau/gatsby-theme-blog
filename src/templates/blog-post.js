@@ -9,7 +9,7 @@ import SEO from '../components/seo'
 
 import { fadeInBottom } from '../style/animations'
 
-import 'prism-themes/themes/prism-duotone-dark.css'
+import 'prism-themes/themes/prism-atom-dark.css'
 
 const Container = styled.div`
   max-width: 100%;

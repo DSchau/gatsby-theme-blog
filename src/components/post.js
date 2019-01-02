@@ -149,17 +149,17 @@ const PostContent = styled.div`
   }
 
   .gatsby-highlight-code-line {
-    background-color: #444;
+    background-color: #0e0e0e;
     display: block;
     margin-right: -1em;
     margin-left: -1em;
     padding-right: 1em;
     padding-left: 0.75em;
-    border-left: 0.25em solid #66d9ef;
+    border-left: 0.25em solid #96cbfe;
   }
 
   .gatsby-highlight {
-    background-color: #272822;
+    background-color: #1d1f21;
     border-radius: 0.3em;
     margin: 0.5em 0;
     padding: 1em;
@@ -167,7 +167,6 @@ const PostContent = styled.div`
   }
 
   .gatsby-highlight pre[class*='language-'] {
-    background-color: transparent;
     margin: 0;
     padding: 0;
     overflow: initial;
