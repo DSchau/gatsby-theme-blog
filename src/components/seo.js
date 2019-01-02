@@ -14,7 +14,7 @@ function SEO({
   title,
   twitter,
 }) {
-  const metaImage = image ? `${siteUrl}${image}` : null
+  const metaImage = image && image.src ? `${siteUrl}${image.src}` : null
   return (
     <Helmet
       htmlAttributes={{
@@ -72,8 +72,12 @@ function SEO({
                   content: metaImage,
                 },
                 {
-                  property: 'twitter:image',
-                  content: metaImage,
+                  property: 'og:image:width',
+                  content: image.width,
+                },
+                {
+                  property: 'og:image:height',
+                  content: image.height,
                 },
                 {
                   property: 'twitter:card',

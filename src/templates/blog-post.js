@@ -32,7 +32,7 @@ export default function BlogPost({ data = {}, pageContext }) {
     ? post.frontmatter.excerpt
     : post.excerpt
   const image = post.frontmatter.featured
-    ? post.frontmatter.featured.image.resize.src
+    ? post.frontmatter.featured.image.resize
     : null
 
   const meta = [
@@ -100,6 +100,8 @@ export const pageQuery = graphql`
         featured {
           image: childImageSharp {
             resize(width: 1500) {
+              height
+              width
               src
             }
           }
