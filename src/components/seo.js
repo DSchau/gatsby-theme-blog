@@ -2,7 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
-function SEO({ author, description, lang, meta, keywords, title, twitter }) {
+// TODO: re-work when static query + themes is fixed
+function SEO({
+  author,
+  description,
+  lang,
+  image,
+  meta,
+  keywords,
+  siteUrl,
+  title,
+  twitter,
+}) {
+  const metaImage = image ? `${siteUrl}${image}` : null
   return (
     <Helmet
       htmlAttributes={{
@@ -32,10 +44,6 @@ function SEO({ author, description, lang, meta, keywords, title, twitter }) {
           content: author,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
           name: `twitter:creator`,
           content: twitter,
         },
@@ -56,6 +64,29 @@ function SEO({ author, description, lang, meta, keywords, title, twitter }) {
               }
             : []
         )
+        .concat(
+          metaImage
+            ? [
+                {
+                  property: 'og:image',
+                  content: metaImage,
+                },
+                {
+                  property: 'twitter:image',
+                  content: metaImage,
+                },
+                {
+                  property: 'twitter:card',
+                  content: 'summary_large_image',
+                },
+              ]
+            : [
+                {
+                  name: `twitter:card`,
+                  content: `summary`,
+                },
+              ]
+        )
         .concat(meta)}
     />
   )
@@ -68,12 +99,14 @@ SEO.defaultProps = {
   lang: `en`,
   meta: [],
   keywords: [],
+  siteUrl: 'https://blog.dustinschau.com',
   twitter: '@schaudustin',
 }
 
 SEO.propTypes = {
   author: PropTypes.string,
   description: PropTypes.string,
+  image: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),

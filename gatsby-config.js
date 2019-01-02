@@ -1,5 +1,4 @@
 const path = require('path')
-const fs = require('fs')
 
 module.exports = function themeConfig({
   blogContent = path.join('content', 'blog'),
@@ -11,6 +10,7 @@ module.exports = function themeConfig({
       description:
         'The blog of the Omaha, Nebraska based software engineer, Dustin Schau',
       author: 'Dustin Schau',
+      siteUrl: 'https://blog.dustinschau.com',
       social: {
         twitter: 'schaudustin',
       },

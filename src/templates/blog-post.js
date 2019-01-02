@@ -52,26 +52,14 @@ export default function BlogPost({ data = {}, pageContext }) {
       name: `article:published_time`,
       content: post.frontmatter.rawDate,
     },
-  ].concat(
-    image
-      ? [
-          {
-            name: `og:image`,
-            content: image,
-          },
-          {
-            name: `twitter:image`,
-            content: image,
-          },
-        ]
-      : []
-  )
+  ]
 
   return (
     <Container>
       <SEO
         title={post.frontmatter.title}
         description={description}
+        image={image}
         meta={meta}
       />
       <Post
@@ -111,7 +99,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         featured {
           image: childImageSharp {
-            resize(width: 1500, height: 1500) {
+            resize(width: 1500) {
               src
             }
           }
