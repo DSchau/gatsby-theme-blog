@@ -9,7 +9,7 @@ import SEO from '../components/seo'
 
 import { fadeInBottom } from '../style/animations'
 
-import 'prismjs/themes/prism-okaidia.css'
+import 'prism-themes/themes/prism-duotone-dark.css'
 
 const Container = styled.div`
   max-width: 100%;
@@ -24,7 +24,7 @@ const Container = styled.div`
   }
 `
 
-export default function BlogPost({ data = {}, location, pageContext }) {
+export default function BlogPost({ data = {}, pageContext }) {
   const { markdownRemark: post } = data
   const { next, prev } = pageContext
 
