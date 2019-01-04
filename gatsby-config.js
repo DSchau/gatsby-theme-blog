@@ -6,13 +6,12 @@ module.exports = function themeConfig({
 } = {}) {
   return {
     siteMetadata: {
-      title: 'Blog',
-      description:
-        'The blog of the Omaha, Nebraska based software engineer, Dustin Schau',
-      author: 'Dustin Schau',
-      siteUrl: 'https://blog.dustinschau.com',
+      title: 'Insert title here',
+      description: 'Your great blog',
+      author: 'Your name',
+      siteUrl: 'https://yoursiteurl.com',
       social: {
-        twitter: 'schaudustin',
+        twitter: 'yourtwitterhandle',
       },
     },
     plugins: [

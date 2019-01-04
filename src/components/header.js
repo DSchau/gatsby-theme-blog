@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Link from 'gatsby-link'
+import { Link, StaticQuery, graphql } from 'gatsby'
 import styled from '@emotion/styled'
 
 import NavigationButton from './navigation-button'
@@ -72,7 +72,6 @@ const Letter = styled.span`
 `
 
 const First = styled.span`
-  padding-right: 2vw;
   font-weight: 700;
   white-space: nowrap;
 `
@@ -117,34 +116,59 @@ class BlogHeader extends Component {
   render() {
     const { showBackButton } = this.state
     return (
-      <Header id="blog-header" {...this.props}>
-        {showBackButton && (
-          <BackContainer>
-            <NavigationButton
-              to="https://www.dustinschau.com"
-              absolute
-              prev
-              target="_self"
-            >
-              Back to Home
-            </NavigationButton>
-          </BackContainer>
-        )}
-        <Name className="name">
-          <StyledLink to="/">
-            <First>
-              {'Dustin'.split('').map((letter, index) => (
-                <Letter key={`${letter}-${index}`}>{letter}</Letter>
-              ))}
-            </First>
-            <Last>
-              {'Schau'.split('').map((letter, index) => (
-                <Letter key={`${letter}-${index}`}>{letter}</Letter>
-              ))}
-            </Last>
-          </StyledLink>
-        </Name>
-      </Header>
+      <StaticQuery
+        query={graphql`
+          {
+            site {
+              siteMetadata {
+                author
+              }
+            }
+          }
+        `}
+        render={data => {
+          const name = data.site.siteMetadata.author.split(' ')
+          return (
+            <Header id="blog-header" {...this.props}>
+              {showBackButton && (
+                <BackContainer>
+                  <NavigationButton
+                    to="https://www.dustinschau.com"
+                    absolute
+                    prev
+                    target="_self"
+                  >
+                    Back to Home
+                  </NavigationButton>
+                </BackContainer>
+              )}
+              <Name className="name">
+                <StyledLink to="/">
+                  {name.map((part, index) => {
+                    const Wrapper = index === 0 ? First : Last
+                    return (
+                      <Wrapper
+                        key={part}
+                        css={
+                          index === 0 && name.length > 1
+                            ? {
+                                paddingRight: '2vw',
+                              }
+                            : {}
+                        }
+                      >
+                        {part.split('').map((letter, index) => (
+                          <Letter key={`${letter}-${index}`}>{letter}</Letter>
+                        ))}
+                      </Wrapper>
+                    )
+                  })}
+                </StyledLink>
+              </Name>
+            </Header>
+          )
+        }}
+      />
     )
   }
 }
