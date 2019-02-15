@@ -1,8 +1,6 @@
 # `@dschau/gatsby-theme-blog`
 
-The backing theme powering [my blog](https://github.com/dschau/blog).
-
-_Note: this isn't generally applicable... yet. I wanted to explore themes, and this was my way of exploring. However--by all means, check it out and see if you can customize and use for your own blog!_
+**Now lives at [DSchau/gatsby-themes](https://github.com/dschau/gatsby-themes)**
 
 ## Install
 
